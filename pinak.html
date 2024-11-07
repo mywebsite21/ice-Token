@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tap Tap Earning Site</title>
+    <style>
+        /* Body Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0b3a, #3a0ca3);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            width: 90%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Balance Button */
+        .balance {
+            background: linear-gradient(145deg, #3d7efb, #1a4de6);
+            padding: 8px 16px;
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 5$ Claim Button */
+        .join-now {
+            background: linear-gradient(145deg, #ff6b6b, #ff4757);
+            padding: 8px 16px;
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+
+        .join-now:hover {
+            background: linear-gradient(145deg, #ff4757, #ff6b6b);
+            box-shadow: 0px 6px 10px rgba(255, 0, 0, 0.4);
+        }
+
+        /* Main Token Section */
+        .token-section {
+            text-align: center;
+        }
+
+        .token-section h1 {
+            font-size: 2.2em;
+            margin: 10px 0;
+            color: #a0a0ff;
+            text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Tap Circle with Image */
+        .tap-circle {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #555, #888);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .tap-circle:hover {
+            transform: scale(1.1);
+        }
+
+        .tap-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Counter and Launching Text */
+        .counter-launch {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .counter, .launching-text {
+            width: 120px;
+            padding: 12px;
+            text-align: center;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            color: #fff;
+        }
+
+        .counter {
+            background: linear-gradient(145deg, #4250e6, #6d80ff);
+            color: #e0e0ff;
+        }
+
+        .launching-text {
+            background: linear-gradient(145deg, #27993f, #3cb255);
+            color: #c8ffc8;
+        }
+
+        /* Claim Button */
+        .claim-btn {
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: linear-gradient(145deg, #1d3efb, #325aff);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .claim-btn:hover {
+            background: linear-gradient(145deg, #325aff, #1d3efb);
+            transform: scale(1.05);
+        }
+
+        .claim-btn:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <div class="balance" id="balance">Balance: $0.00</div>
+        <!-- 5$ Claim Button on Top Right -->
+        <a href="https://www.profitablecpmrate.com/guzkchjn?key=91c04bd1df3771513dc4edc2775df2e7" class="join-now" target="_blank">5$ Claim</a>
+    </div>
+
+    <!-- Token Section -->
+    <div class="token-section">
+        <h1>Ice Token🧊</h1>
+    </div>
+
+    <!-- Tap Circle with Image -->
+    <div class="tap-circle" onclick="addPoint()">
+        <img src="https://i.imgur.com/rjW7Shx.png" alt="Tap Image">
+    </div>
+
+    <!-- Counter and Launching Text -->
+    <div class="counter-launch">
+        <div class="counter" id="tapCounter">0 Taps</div>
+        <div class="launching-text">withdraw option coming⚠️</div>
+    </div>
+
+    <!-- Claim Button -->
+    <button class="claim-btn" onclick="claimPoints()">Claim</button>
+
+    <script>
+        // Variables for Points and Balance
+        let points = 0;
+        let balance = parseFloat(localStorage.getItem('balance')) || 0;
+
+        // Display the saved balance
+        document.getElementById("balance").innerText = "Balance: $" + balance.toFixed(2);
+
+        // Function to Add Points
+        function addPoint() {
+            points++;
+            document.getElementById("tapCounter").innerText = points + " Taps";
+        }
+
+        // Function to Claim Points
+        function claimPoints() {
+            if (points >= 10) {
+                let earnedBalance = (points / 10) * 0.01;
+                balance += earnedBalance;
+                points = 0; // Reset points after claiming
+
+                // Save balance to local storage
+                localStorage.setItem('balance', balance);
+
+                document.getElementById("balance").innerText = "Balance: $" + balance.toFixed(2);
+                document.getElementById("tapCounter").innerText = points + " Taps";
+            } else {
+                alert("You need at least 10 points to claim!");
+            }
+        }
+    </script>
+
+</body>
+</html>
